@@ -1,0 +1,46 @@
+<div class="filter">
+    <button class="addBtn" ng-click="newCustomer()">Додати Клієнта</button>
+    <div class="region">
+        <label>Регіон</label>
+        <select ng-change="onLocationChange()" ng-model="selectedLocation" ng-options="location.locationName for location in locations">
+    </select>
+    </div>
+    <div class="search">
+        <input type="text" ng-model="searchQuery" ng-disabled="searchDisabled">
+        <button ng-click="searchCustomers()">{{searchLabel}}</button>
+
+    </div>
+</div>
+
+
+
+<table>
+    <tr>
+        <th><a ng-click="sortType='lastName';sortReverse=!sortReverse">Клієнт</a> <i class="arrow up" ng-show="sortType == 'lastName' && !sortReverse"></i><i class="arrow down" ng-show="sortType == 'lastName' && sortReverse"></i></th>
+        <th>Номер Телефону</th>
+        <th><a ng-click="sortType='locationName';sortReverse=!sortReverse">Регіон</a> <i class="arrow up" ng-show="sortType == 'locationName' && !sortReverse"></i><i class="arrow down" ng-show="sortType == 'locationName' && sortReverse"></i></th>
+        <th>Instagram</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    <tbody>
+        <tr ng-repeat="customer in customers | filter: {locationId: selectedLocation._id} | orderBy:sortType:sortReverse |  startFrom:currentPage*pageSize | limitTo:pageSize">
+            <td><a ng-click="editCustomer(customer)">{{customer.firstName}} {{customer.lastName}}</a></td>
+            <td>{{customer.tel}}</td>
+            <td>{{locationMap[customer.locationId]}}</td>
+            <td>{{customer.instagram}}</td>
+            <td>{{customer.email}}</td>
+            <td><button ng-click="showOrders(customer)">Замовлення</button></td>
+        </tr>
+    </tbody>
+
+</table>
+
+<div class="pagination">
+    <a ng-click="prevPage()">&laquo;</a>
+    <a ng-repeat="page in pages" ng-class="{active: page.n == currentPage}" ng-click="gotoPage(page.n)">{{page.n+1}}</a>
+    <a ng-click="nextPage()">&raquo;</a>
+</div>
+
+
+<div ng-include="'fragments/customerform.html'"></div>

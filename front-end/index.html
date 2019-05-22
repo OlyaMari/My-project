@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gemSis">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/customers.js"></script>
+    <script src="js/orders.js"></script>
+    <script src="js/locations.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="main_container">
+        <div class="logo"><img src="css/background.jpg" class="img_logo"></div>
+        <nav class="header">
+            <a id="headerNavCustomers" href="#!customers">КЛІЄНТИ</a>
+            <a id="headerNavOrders" href="#!orders">ЗАМОВЛЕННЯ</a>
+            <a id="headerNavLocations" href="#!locations">РЕГІОНИ</a>
+        </nav>
+        <div ng-view></div>
+
+
+
+
+    </div>
+
+</body>
+
+</html>

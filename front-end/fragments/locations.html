@@ -1,0 +1,19 @@
+<button class="addBtn" ng-click="newLocation()">Додати Регіон</button>
+
+<table class="locations">
+    <tr>
+        <th>Регіон</th>
+    </tr>
+    <tbody>
+        <tr ng-repeat="location in locations">
+            <td><a ng-click="editLocation(location)">{{location.locationName}}</a></td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+
+
+
+<div ng-include="'fragments/locationform.html'"></div>

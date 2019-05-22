@@ -1,0 +1,30 @@
+<div id="locationForm" class="modal">
+
+    <form name="locationForm" class="modal-content animate">
+
+        <span ng-init="setForm(locationForm)"></span>
+
+
+        <div class="imgcontainer">
+            <span ng-click="closeLocationForm()" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <div class="formField">
+                <label><strong>Регіон:</strong></label>
+                <input type="text" required ng-model="locationObj.locationName">
+            </div>
+        </div>
+
+
+
+
+
+        <div class="container buttons">
+            <button type="button" ng-click="saveLocation()" ng-disabled="locationForm.$invalid">Зберегти</button>
+            <button type="button" ng-click="closeLocationForm()">Відмінити</button>
+
+            <button type="button" ng-show="locationObj.hasOwnProperty('_id')" ng-click="deleteLocation()">Видалити</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,50 @@
+<div class="filter">
+    <button class="addBtn" ng-click="newOrder()">Додати Замовлення</button>
+    
+       
+       <ul class="filter">
+        <li ng-repeat="productType in productTypes">
+            <label>{{productType.typeName}}</label>
+            <input type="radio" name="productType" ng-change="onProductTypeChange()" ng-model="$parent.selectedProductType" value="{{productType._id}}"> </li>
+
+    </ul>
+
+    <div class="customer" ng-show="customerId.length">
+        <span>{{customerName}}</span>
+        <button ng-click="resetCustomer()">Reset</button>
+    </div>
+</div>
+
+<table>
+    <tr>
+        <th><a ng-click="sortType='orderDate';sortReverse=!sortReverse">Дата</a> <i class="arrow up" ng-show="sortType == 'orderDate' && !sortReverse"></i><i class="arrow down" ng-show="sortType == 'orderDate' && sortReverse"></i></th>
+        <th>Клієнт</th>
+        <th>Тип Продукту</th>
+        <th><a ng-click="sortType='deliveryDate';sortReverse=!sortReverse">Зробити до</a> <i class="arrow up" ng-show="sortType == 'deliveryDate' && !sortReverse"></i><i class="arrow down" ng-show="sortType == 'deliveryDate' && sortReverse"></i></th>
+        <th>Залишилось днів</th>
+        <th>Опис Продукту</th>
+
+    </tr>
+    <tbody>
+        <tr ng-repeat="order in orders | filter: {productTypeId: selectedProductType, customerId: customerId} | orderBy:sortType:sortReverse | startFrom:currentPage*pageSize | limitTo:pageSize">
+            <td><a ng-click="editOrder(order)">{{order.insertDate | date:"dd/MM/yyyy"}}</a></td>
+            <td><a ng-click="searchCustomer(order.customer[0])">{{order.customer[0].firstName}} {{order.customer[0].lastName}}</a></td>
+            <td>{{productTypeMap[order.productTypeId]}}</td>
+            <td>{{order.deliveryDate | date:"dd/MM/yyyy"}}</td>
+            <td ng-class="{'deliveryDate1': (order.deliveryDate | remainDays) <= 1}">{{order.deliveryDate | remainDays}}</td>
+            <td>{{order.notes}}</td>
+
+        </tr>
+    </tbody>
+
+</table>
+
+<div class="pagination">
+    <a ng-click="prevPage()">&laquo;</a>
+    <a ng-repeat="page in pages" ng-class="{active: page.n == currentPage}" ng-click="gotoPage(page.n)">{{page.n+1}}</a>
+    <a ng-click="nextPage()">&raquo;</a>
+</div>
+
+
+
+<div ng-include="'fragments/orderform.html'"></div>

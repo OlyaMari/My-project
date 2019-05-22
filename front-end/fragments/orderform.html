@@ -1,0 +1,44 @@
+<div id="orderForm" class="modal">
+
+    <form name="orderForm" class="modal-content animate">
+
+        <span ng-init="setForm(orderForm)"></span>
+
+
+        <div class="imgcontainer">
+            <span ng-click="closeOrderForm()" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <div class="formField">
+                <label><strong>Клієнт:</strong></label>
+                <select ng-model="orderObj.customer" ng-options="customer.lastName + ' ' + customer.firstName  for customer in customers"></select>
+            </div>
+            <div class="formField">
+                <label><strong>Тип продукту:</strong></label>
+                <select ng-model="orderObj.productTypeId">
+            <option ng-repeat="productType in productTypes | filter: {typeName: '!'+'Всі'}" value="{{productType._id}}">{{productType.typeName}}</option>
+            </select>
+            </div>
+            <div class="formField">
+                <label><strong>Зробити до:</strong></label>
+                <input type="date" required ng-model="orderObj.deliveryDate" ng-model-options="{timezone: '-0000'}">
+            </div>
+            <div class="formField">
+                <label><strong>Опис Продукту:</strong></label>
+                <textarea placeholder="Введіть опис продукту" required ng-model="orderObj.notes"></textarea>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="container buttons">
+            <button type="button" ng-click="saveOrder()" ng-disabled="orderForm.$invalid">Зберегти</button>
+            <button type="button" ng-click="closeOrderForm()">Відмінити</button>
+
+            <button type="button" ng-show="orderObj.hasOwnProperty('_id')" ng-click="deleteOrder()">Видалити</button>
+        </div>
+    </form>
+</div>

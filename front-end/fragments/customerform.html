@@ -1,0 +1,50 @@
+<div id="customerForm" class="modal">
+
+    <form name="customerForm" class="modal-content animate">
+        
+        <span ng-init="setForm(customerForm)"></span>
+           
+        <div class="imgcontainer">
+            <span ng-click="closeCustomerForm()" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <div class="formField">
+                <label><strong>Ім'я:</strong></label>
+                <input type="text" placeholder="Введіть ім'я" required ng-model="customerObj.firstName">
+            </div>
+            <div class="formField">
+                <label><strong>Прізвище:</strong></label>
+                <input type="text" placeholder="Введіть прізвище" required ng-model="customerObj.lastName">
+            </div>
+            <div class="formField">
+                <label><strong>Номер телефону:</strong></label>
+                <input type="text" placeholder="Введіть номер телефону" required ng-model="customerObj.tel">
+            </div>
+            <div class="formField">
+                <label><strong>Instagram:</strong></label>
+                <input type="text" placeholder="Введіть Instagram" required ng-model="customerObj.instagram">
+            </div>
+             <div class="formField">
+                <label><strong>Email:</strong></label>
+                <input type="email" placeholder="Введіть Email" required ng-model="customerObj.email">
+            </div>
+            <div class="formField">
+                <label><strong>Регіон:</strong></label>
+                <select ng-model="customerObj.locationId">
+            <option ng-repeat="location in locations | filter: {locationName: '!'+'Всі'}" value="{{location._id}}">{{location.locationName}}</option>
+            </select>
+            </div>
+
+
+
+        </div>
+
+        <div class="container buttons">
+            <button type="button" ng-click="saveCustomer()" ng-disabled="customerForm.$invalid">Зберегти</button>
+            <button type="button" ng-click="closeCustomerForm()">Відмінити</button>
+            
+            <button type="button" ng-show="customerObj.hasOwnProperty('_id')" ng-click="deleteCustomer()">Видалити</button>
+        </div>
+    </form>
+</div>

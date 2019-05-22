@@ -1,0 +1,196 @@
+@font-face {
+    font-family: 'myFirstFont';
+    src: url('Gabriola.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*    font-family: monospace;*/
+    font-size: 1.05em;
+    font-family: 'myFirstFont';
+    /*    padding: 5px;*/
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+div.logo img.img_logo {
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+
+.addBtn {
+    margin-left: 10px;
+}
+
+nav a {
+    display: block;
+    color: hotpink;
+    text-align: center;
+    padding: 14px 16px;
+    margin-right: 25px;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+nav a:hover {
+    color: hotpink;
+    background-color: papayawhip;
+}
+
+nav a.active {
+    color: white;
+    background-color: hotpink;
+}
+
+select {
+    height: 1.5em;
+}
+
+table {
+    margin: auto;
+    padding: 5px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.locations {
+    margin-top: 20px;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: cornsilk
+}
+
+th {
+    background-color: cadetblue;
+    color: white;
+}
+
+th a {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+td a {
+    color: gray;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.deliveryDate1 {
+    color: red;
+}
+
+.filter {
+    /*    margin-left: 5px;*/
+    margin: 10px;
+}
+
+ul.filter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+ul.filter li {
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+div.filter {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.region {
+    flex: auto;
+    margin-left: 50px;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1em;
+    font-size: 1.5em;
+}
+
+.pagination a.active {
+    background-color: cadetblue;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.formField {
+    margin-bottom: 10px;
+}
+
+div.formField label {
+    margin-right: 10px;
+}
+
+form.modal-content input.ng-invalid.ng-touched {
+    background-color: pink;
+}
+
+form.modal-content input.ng-valid.ng-touched {
+    background-color: lightgreen;
+}
+
+button {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 2em;
+}
+
+form.modal-content .buttons {
+    text-align: center;
+}
+
+form.modal-content .buttons button {
+    margin-right: 10px;
+}
+
+i {
+    border: solid;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
